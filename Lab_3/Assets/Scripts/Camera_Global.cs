@@ -8,6 +8,8 @@ public class Camera_Global : MonoBehaviour {
 
 	public Transform player;
 
+	public Rigidbody2D arby;
+
 	public Transform BG2;
 
 	// Use this for initialization
@@ -17,6 +19,7 @@ public class Camera_Global : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		switch (cameraMode) {
 
 		default:
@@ -27,6 +30,16 @@ public class Camera_Global : MonoBehaviour {
 			this.transform.position = new Vector3 (BG2.position.x, BG2.position.y, -10);
 			break;
 		case 3:
+			this.transform.position = new Vector3 (player.position.x, 0, -10);
+			if(arby.velocity.x < 0)
+			{
+				this.GetComponent<Camera> ().orthographicSize += 0.1f;
+			} else if (arby.velocity.x > 0)
+			{
+				if (this.GetComponent<Camera> ().orthographicSize > 0) {
+					this.GetComponent<Camera> ().orthographicSize -= 0.1f;
+				}
+			}
 			break;
 
 		}
