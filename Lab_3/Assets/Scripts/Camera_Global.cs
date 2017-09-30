@@ -33,14 +33,14 @@ public class Camera_Global : MonoBehaviour {
 			this.transform.position = new Vector3 (player.position.x, 0, -10);
 			if(arby.velocity.x < 0)
 			{
-				this.GetComponent<Camera> ().orthographicSize += 0.1f;
+				this.GetComponent<Camera> ().orthographicSize += 0.005f;
 			} else if (arby.velocity.x > 0)
 			{
-				if (this.GetComponent<Camera> ().orthographicSize > 0) {
-					this.GetComponent<Camera> ().orthographicSize -= 0.1f;
-				}
-			}
-			break;
+				if (this.GetComponent<Camera> ().orthographicSize > 1.7) {
+					this.GetComponent<Camera> ().orthographicSize -= 0.005f;
+				} 
+			} 
+            break;
 
 		}
 	}
